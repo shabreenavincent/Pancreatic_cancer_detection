@@ -4,7 +4,13 @@ An AI-based Data Science project for the early detection of pancreatic cancer us
 
 ---
 
-## Repository Structure
+## Project Overview
+
+Pancreatic Cancer Detection Using Biomarkers and CT Images is an AI-based Data Science project focused on supporting the early detection of pancreatic cancer. The project combines two complementary sources of medical information: structured biomarker data and CT images. The biomarker data provides measurable biological information, while CT images provide visual information related to the pancreas.
+
+The project applies data preprocessing and AI/ML-based analysis to these inputs and integrates the resulting information to produce an overall diagnostic assessment. The final objective is to generate an integrated diagnostic report that can assist in identifying potential pancreatic cancer and support early-detection workflows.
+
+The project demonstrates the application of Python-based Data Science, Artificial Intelligence, Machine Learning, and medical-image analysis to a real-world healthcare problem. It is intended as an AI-assisted research/diagnostic-support system and not as a replacement for professional medical diagnosis.
 
 ```text
 pancreatic-cancer-detection-biomarkers-ct/
