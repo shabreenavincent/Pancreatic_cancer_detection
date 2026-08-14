@@ -200,6 +200,13 @@ Immediate Recommendations:
 - Further imaging (MRI / biopsy)
 - Multidisciplinary cancer care evaluation
 ```
+### OUTPUT:
+<img width="1350" height="584" alt="image" src="https://github.com/user-attachments/assets/7c8d3322-c35e-4bb3-8484-95fc9a89a529" />
+<img width="1093" height="454" alt="image" src="https://github.com/user-attachments/assets/ca02d748-0a13-40b9-b8a9-3b1526ec6feb" />
+<img width="1087" height="458" alt="image" src="https://github.com/user-attachments/assets/77f0e121-b964-4de6-ae9b-561f3e61ea2d" />
+<img width="1084" height="460" alt="image" src="https://github.com/user-attachments/assets/afb2414e-5eea-4c29-a1a5-9ae836e1b6f0" />
+<img width="1084" height="457" alt="image" src="https://github.com/user-attachments/assets/43b799cd-5f03-4cf1-a720-a88c4c9185cb" />
+<img width="1090" height="457" alt="image" src="https://github.com/user-attachments/assets/dc68d5d3-2839-447f-9ae5-45b1b2a27e17" />
 
 ---
 
