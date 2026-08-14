@@ -208,7 +208,7 @@ Immediate Recommendations:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/pancreatic-cancer-detection.git
+git clone https://github.com/shabreenavincent/Pancreatic_cancer_detection.git
 cd pancreatic-cancer-detection
 ```
 
