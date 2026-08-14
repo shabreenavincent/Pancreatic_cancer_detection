@@ -1,304 +1,237 @@
-# Pancreatic Cancer Detection using Biomarkers and CT
+# 🩺 Pancreatic Cancer Detection Using Biomarkers and CT Images
 
-An AI-based Data Science project for the early detection of pancreatic cancer using **biomarker analysis** and **CT image analysis**.
+An **AI-powered healthcare project** that combines **CT image analysis** and **biomarker-based prediction** to support the **early detection of pancreatic cancer**. The system integrates a **CNN-based CT model** with a **multiclass biomarker prediction model** to generate an integrated diagnostic assessment.
 
 ---
 
-## Project Overview
+## 📌 Project Overview
 
-Pancreatic Cancer Detection Using Biomarkers and CT Images is an AI-based Data Science project focused on supporting the early detection of pancreatic cancer. The project combines two complementary sources of medical information: structured biomarker data and CT images. The biomarker data provides measurable biological information, while CT images provide visual information related to the pancreas.
+This project was developed to explore how **Artificial Intelligence, Machine Learning, and Deep Learning** can be applied to a real-world healthcare problem. It uses **two complementary medical data sources**:
 
-The project applies data preprocessing and AI/ML-based analysis to these inputs and integrates the resulting information to produce an overall diagnostic assessment. The final objective is to generate an integrated diagnostic report that can assist in identifying potential pancreatic cancer and support early-detection workflows.
+* **CT Images** for image-based pancreatic abnormality analysis
+* **Biomarker Data** for structured clinical prediction
 
-The project demonstrates the application of Python-based Data Science, Artificial Intelligence, Machine Learning, and medical-image analysis to a real-world healthcare problem. It is intended as an AI-assisted research/diagnostic-support system and not as a replacement for professional medical diagnosis.
+The outputs from both models are combined to provide a **more comprehensive diagnostic assessment** than relying on a single modality alone.
+
+---
+
+## 🚀 Key Features
+
+* 🧬 **Biomarker-based pancreatic cancer prediction**
+* 🖼️ **CT image classification using a CNN model**
+* 🤖 **AI/ML and Deep Learning integration**
+* 📊 **Multiclass prediction support**
+* 📝 **Integrated diagnostic assessment workflow**
+* 💻 **Python-based end-to-end prediction pipeline**
+* 🎨 Simple user interface with background assets
+
+---
+
+## 🛠️ Technology Stack
+
+| Category                | Technology         |
+| ----------------------- | ------------------ |
+| Programming Language    | Python             |
+| Artificial Intelligence | AI                 |
+| Machine Learning        | Scikit-learn       |
+| Deep Learning           | TensorFlow / Keras |
+| Neural Networks         | CNN                |
+| Model Serialization     | Pickle (.pkl)      |
+| Image Processing        | OpenCV / PIL       |
+| Development Environment | VS Code            |
+| Version Control         | Git & GitHub       |
+
+---
+
+## 📂 Project Structure
 
 ```text
-pancreatic-cancer-detection-biomarkers-ct/
+pancreatic_cancer_app/
 │
-├── README.md
+├── app.py
 ├── requirements.txt
-├── .gitignore
-├── LICENSE
+├── README.md
 │
-├── data/
-│   ├── biomarkers/
-│   ├── ct_images/
-│   └── sample_outputs/
+├── assets/
+│   └── background.jpg
 │
-├── notebooks/
-│   ├── biomarker_analysis.ipynb
-│   ├── ct_image_analysis.ipynb
-│   └── model_evaluation.ipynb
+├── models/
+│   ├── ct_cnn_model.h5
+│   └── pancreatic_biomarker_multiclass.pkl
 │
-├── src/
-│   ├── data_preprocessing.py
-│   ├── biomarker_model.py
-│   ├── ct_processing.py
-│   ├── prediction_pipeline.py
-│   └── report_generator.py
+├── utils/
+│   ├── preprocess.py
+│   └── predict.py
 │
-├── outputs/
-│   ├── predictions/
-│   ├── reports/
-│   └── visualizations/
-│
-└── docs/
-    ├── architecture.md
-    └── methodology.md
+└── venv/
 ```
 
 ---
 
-## README.md
-
-````md
-# Pancreatic Cancer Detection using Biomarkers and CT
-
-## Project Overview
-
-This project presents an **AI-powered Data Science solution** for the early detection of **Pancreatic Cancer** by integrating **biomarker-based structured data analysis** with **CT scan image analysis**.
-
-The objective is to support **data-driven clinical decision making** by combining insights obtained from both medical imaging and biomarker information.
-
----
-
-## Key Features
-
-- Biomarker data preprocessing and analysis
-- CT image preprocessing and interpretation
-- Machine Learning and Deep Learning workflow
-- CNN/ANN-based predictive analysis
-- Integrated diagnostic assessment
-- Automated report generation
-- Visualization of analytical results
-
----
-
-## Technologies Used
-
-| Category | Tools |
-|----------|------|
-| Programming | Python |
-| AI | Artificial Intelligence |
-| ML | Machine Learning |
-| DL | Deep Learning |
-| Neural Networks | CNN, ANN |
-| Image Processing | OpenCV |
-| Data Analysis | NumPy, Pandas |
-| Visualization | Matplotlib, Seaborn |
-| Development | Jupyter Notebook, VS Code |
-| Version Control | Git, GitHub |
-
----
-
-## Project Workflow
+## 🔄 System Workflow
 
 ```text
-Biomarker Data
-        │
-        ▼
-Data Preprocessing
-        │
-        ▼
-Feature Analysis
-        │
-        ▼
-ML / ANN Prediction
-        │
-        ├──────────────┐
-        │              │
-        ▼              ▼
-CT Image ──► Image Preprocessing ──► CNN Analysis
-                           │
-                           ▼
-                 Integrated Diagnostic Assessment
-                           │
-                           ▼
-                    Report Generation
-````
+            ┌──────────────────┐
+            │  Patient Input   │
+            └────────┬─────────┘
+                     │
+      ┌──────────────┴──────────────┐
+      │                             │
+      ▼                             ▼
+┌───────────────┐         ┌────────────────┐
+│ Biomarker Data│         │   CT Image     │
+└───────┬───────┘         └───────┬────────┘
+        │                           │
+        ▼                           ▼
+┌───────────────┐         ┌────────────────┐
+│ Preprocessing │         │ Image Preprocess│
+└───────┬───────┘         └───────┬────────┘
+        │                           │
+        ▼                           ▼
+┌───────────────┐         ┌────────────────┐
+│ Biomarker ML  │         │ CNN CT Model   │
+│   (.pkl)      │         │    (.h5)       │
+└───────┬───────┘         └───────┬────────┘
+        │                           │
+        └──────────┬────────────────┘
+                   ▼
+        ┌────────────────────────┐
+        │ Integrated Assessment │
+        └──────────┬─────────────┘
+                   ▼
+        ┌────────────────────────┐
+        │ Diagnostic Prediction │
+        └────────────────────────┘
+```
 
 ---
 
-## Detailed Description
+## 🧠 Models Used
 
-**Pancreatic Cancer Detection using Biomarkers and CT** is a **Data Science and AI/ML project** developed using **Python** for the early identification of pancreatic cancer. The system combines **biomarker-based structured data analysis** with **CT scan image processing** to identify diagnostic patterns associated with pancreatic abnormalities. Techniques from **Artificial Intelligence, Machine Learning, Deep Learning, CNN, and ANN** are applied for **data preprocessing, feature extraction, image interpretation, predictive modeling, and diagnostic pattern analysis**. The outputs from both biomarker analysis and CT image analysis are integrated to generate a **consolidated diagnostic assessment and automated diagnostic report**, enabling **data-driven clinical decision support** and demonstrating the application of **Python, AI, Machine Learning, Deep Learning, CNN, ANN, and medical image analytics** in healthcare-focused predictive diagnostics.
+### 1. CT Image Model
+
+* **File:** `models/ct_cnn_model.h5`
+* **Type:** Convolutional Neural Network (CNN)
+* **Purpose:** Analyze CT scan images for pancreatic cancer-related abnormalities.
+
+### 2. Biomarker Prediction Model
+
+* **File:** `models/pancreatic_biomarker_multiclass.pkl`
+* **Type:** Machine Learning multiclass prediction model
+* **Purpose:** Predict pancreatic cancer-related outcomes from biomarker values.
 
 ---
 
-## Installation
+## ⚙️ Installation
+
+### Clone the repository
 
 ```bash
-git clone https://github.com/shabreenavincent/Pancreatic_cancer_detection.git
-cd pancreatic-cancer-detection-biomarkers-ct
+git clone https://github.com/your-username/pancreatic-cancer-detection.git
+cd pancreatic-cancer-detection
+```
 
+### Create a virtual environment
+
+```bash
+python -m venv venv
+```
+
+### Activate the environment
+
+**Windows**
+
+```bash
+venv\\Scripts\\activate
+```
+
+**Linux / macOS**
+
+```bash
+source venv/bin/activate
+```
+
+### Install dependencies
+
+```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-## Running the Project
+## ▶️ Running the Application
 
-### Biomarker Analysis
-
-```bash
-python src/biomarker_model.py
-```
-
-### CT Image Analysis
+Start the application using:
 
 ```bash
-python src/ct_processing.py
+python app.py
 ```
 
-### Complete Prediction Pipeline
+The application will load:
 
-```bash
-python src/prediction_pipeline.py
-```
-
----
-
-## Sample Output
-
-The `outputs/` folder contains:
-
-* Prediction results
-* Diagnostic reports
-* CT analysis visualizations
-* Model evaluation outputs
+* `ct_cnn_model.h5` for CT image analysis
+* `pancreatic_biomarker_multiclass.pkl` for biomarker prediction
+* preprocessing and prediction utilities from the `utils/` package
 
 ---
 
-## Future Enhancements
+## 📊 Example Output
 
-* Real-time CT image upload
-* Explainable AI (XAI) visualizations
-* Cloud deployment
-* Web-based clinical dashboard
-* Integration with hospital information systems
+The application generates a diagnostic prediction based on the provided biomarker values and/or CT image input.
 
----
-
-## Author
-
-**Shabreena Vincent**
-B.Tech Artificial Intelligence Data Science 
-
-````
-
----
-
-## requirements.txt
-
-```txt
-numpy
-pandas
-matplotlib
-seaborn
-scikit-learn
-tensorflow
-opencv-python
-jupyter
-````
-
----
-
-## .gitignore
-
-```gitignore
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Virtual environment
-venv/
-env/
-
-# Jupyter
-.ipynb_checkpoints/
-
-# Data files
-data/
-outputs/
-
-# VS Code
-.vscode/
-
-# OS files
-.DS_Store
-Thumbs.db
-```
-
----
-
-## LICENSE
+### Sample Result
 
 ```text
-MIT License
-
-Copyright (c) 2026 Shabreena Vincent
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files to deal in the Software
-without restriction.
+Prediction Status : Pancreatic Cancer Detected
+Confidence Level  : High
+Diagnostic Result : Further clinical evaluation recommended
 ```
+
+> Replace this section with your actual output screenshot inside a `screenshots/` folder if available.
 
 ---
 
-## docs/architecture.md
+## 📈 Project Highlights
 
-```md
-# System Architecture
-
-## Components
-
-1. Biomarker Analysis Module
-2. CT Image Processing Module
-3. AI/ML Prediction Engine
-4. Diagnostic Integration Layer
-5. Report Generation Module
-
-## Data Flow
-
-Patient Data
-→ Biomarker Processing
-→ CT Image Processing
-→ ML/DL Prediction
-→ Integrated Assessment
-→ Diagnostic Report
-```
+* ✔️ **Multimodal healthcare AI application**
+* ✔️ **CNN-based medical image analysis**
+* ✔️ **Machine Learning multiclass prediction**
+* ✔️ **Integrated biomarker + CT workflow**
+* ✔️ **Reusable preprocessing and prediction utilities**
+* ✔️ **Professional Python project structure**
 
 ---
 
-## docs/methodology.md
+## 🎯 Use Cases
 
-```md
-# Methodology
+* Early pancreatic cancer risk assessment
+* AI-assisted clinical decision support
+* Medical image analysis research
+* Biomarker-driven healthcare analytics
+* Academic and healthcare AI demonstration projects
 
-## Step 1: Data Collection
+---
 
-- Biomarker measurements
-- CT scan images
+## 🔒 Important Note
 
-## Step 2: Data Preprocessing
+This project is developed for **educational, research, and AI demonstration purposes**. It is intended to support analysis workflows and **must not be used as a substitute for professional medical diagnosis or treatment decisions**.
 
-- Missing value handling
-- Feature normalization
-- Image resizing and enhancement
+---
 
-## Step 3: Model Processing
+## 📌 Future Improvements
 
-- ML analysis for biomarker data
-- CNN-based image analysis for CT scans
+* Improved CT image preprocessing and segmentation
+* Explainable AI (XAI) visualizations
+* Web-based clinical dashboard
+* Cloud deployment support
+* Enhanced multimodal fusion strategies
+* Larger clinical validation datasets
 
-## Step 4: Integration
+---
 
-Outputs from both modules are combined to produce a unified diagnostic assessment.
+## 👩‍💻 Author
 
-## Step 5: Report Generation
+**Shabreena Vincent**
+B.Tech Artificial Intelligence and Data Science
 
-The final assessment is converted into a structured diagnostic report for clinical interpretation.
-```
-
+---
