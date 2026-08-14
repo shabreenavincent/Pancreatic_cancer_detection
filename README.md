@@ -1,29 +1,40 @@
-# 🩺 Pancreatic Cancer Detection Using Biomarkers and CT Images
+# 🩺 A Hybrid Radiomics–Biomarker Framework for Pancreatic Cancer Risk Prediction
 
-An **AI-powered healthcare project** that combines **CT image analysis** and **biomarker-based prediction** to support the **early detection of pancreatic cancer**. The system integrates a **CNN-based CT model** with a **multiclass biomarker prediction model** to generate an integrated diagnostic assessment.
+An **AI-powered healthcare screening system** that combines **biomarker-based risk assessment** with **CNN-based CT scan confirmation** for pancreatic cancer detection. The application follows a **two-stage hybrid workflow** that performs biomarker screening first and triggers CT analysis only for patients identified as **high risk**, making the screening process more efficient and clinically meaningful.
 
 ---
 
 ## 📌 Project Overview
 
-This project was developed to explore how **Artificial Intelligence, Machine Learning, and Deep Learning** can be applied to a real-world healthcare problem. It uses **two complementary medical data sources**:
+This project was developed to explore how **Artificial Intelligence, Machine Learning, Deep Learning, and medical image analysis** can be applied to a real-world healthcare problem. The system integrates **structured biomarker data** with **radiological CT imaging** to support **early pancreatic cancer risk prediction and confirmation**.
 
-* **CT Images** for image-based pancreatic abnormality analysis
-* **Biomarker Data** for structured clinical prediction
+### Biomarker Inputs
 
-The outputs from both models are combined to provide a **more comprehensive diagnostic assessment** than relying on a single modality alone.
+* Age
+* Sex
+* Creatinine
+* Plasma CA19-9
+* TFF1
+* REG1B
+* REG1A
+* LYVE1
+
+The biomarker values are analyzed using a **multiclass machine-learning model** (`pancreatic_biomarker_multiclass.pkl`). Depending on the prediction, the patient is classified as **Healthy**, **Likely Benign**, or **High Cancer Risk**. Only high-risk patients are directed to the **CT Scan Confirmation module**, where a **CNN-based deep-learning model** (`ct_cnn_model.h5`) analyzes the uploaded abdominal CT scan. The final diagnosis combines the biomarker screening outcome with the CT confirmation result to generate an **integrated diagnostic assessment and clinical recommendation**.
 
 ---
 
 ## 🚀 Key Features
 
-* 🧬 **Biomarker-based pancreatic cancer prediction**
-* 🖼️ **CT image classification using a CNN model**
-* 🤖 **AI/ML and Deep Learning integration**
-* 📊 **Multiclass prediction support**
-* 📝 **Integrated diagnostic assessment workflow**
-* 💻 **Python-based end-to-end prediction pipeline**
-* 🎨 Simple user interface with background assets
+* **Two-stage hybrid screening workflow**
+* **Biomarker-based multiclass risk prediction**
+* **Age and sex aware patient assessment**
+* **Clinical biomarker analysis (CA19-9, TFF1, REG1B, REG1A, LYVE1, Creatinine)**
+* **Automated Healthy / Benign / High-Risk classification**
+* **Conditional CT scan confirmation for high-risk patients**
+* **CNN-based abdominal CT image analysis**
+* **Integrated final diagnostic assessment**
+* **Clinical recommendation generation**
+* **Interactive healthcare-focused user interface**
 
 ---
 
@@ -70,74 +81,144 @@ pancreatic_cancer_app/
 
 ## 🔄 System Workflow
 
+The application follows a **sequential hybrid screening process** designed to minimize unnecessary CT analysis and mimic a realistic clinical decision workflow.
+
+### Workflow Diagram
+
 ```text
-            ┌──────────────────┐
-            │  Patient Input   │
-            └────────┬─────────┘
+        Patient Details + Biomarkers
                      │
-      ┌──────────────┴──────────────┐
-      │                             │
-      ▼                             ▼
-┌───────────────┐         ┌────────────────┐
-│ Biomarker Data│         │   CT Image     │
-└───────┬───────┘         └───────┬────────┘
-        │                           │
-        ▼                           ▼
-┌───────────────┐         ┌────────────────┐
-│ Preprocessing │         │ Image Preprocess│
-└───────┬───────┘         └───────┬────────┘
-        │                           │
-        ▼                           ▼
-┌───────────────┐         ┌────────────────┐
-│ Biomarker ML  │         │ CNN CT Model   │
-│   (.pkl)      │         │    (.h5)       │
-└───────┬───────┘         └───────┬────────┘
-        │                           │
-        └──────────┬────────────────┘
-                   ▼
-        ┌────────────────────────┐
-        │ Integrated Assessment │
-        └──────────┬─────────────┘
-                   ▼
-        ┌────────────────────────┐
-        │ Diagnostic Prediction │
-        └────────────────────────┘
+                     ▼
+        ┌────────────────────────────┐
+        │ Biomarker ML Screening    │
+        │ (.pkl multiclass model)   │
+        └─────────────┬──────────────┘
+                      │
+      ┌───────────────┼────────────────┐
+      │               │                │
+      ▼               ▼                ▼
+ ┌──────────┐ ┌────────────────┐ ┌────────────────────┐
+ │ Healthy  │ │ Likely Benign │ │ High Cancer Risk  │
+ └──────────┘ └────────────────┘ └──────────┬─────────┘
+                                               │
+                                               ▼
+                              ┌────────────────────────┐
+                              │ CT Scan Confirmation   │
+                              │ Upload Abdominal CT    │
+                              └──────────┬─────────────┘
+                                         │
+                                         ▼
+                              ┌────────────────────────┐
+                              │ CNN CT Analysis        │
+                              │ (ct_cnn_model.h5)      │
+                              └──────────┬─────────────┘
+                                         │
+                                         ▼
+                              ┌────────────────────────┐
+                              │ Final Diagnostic       │
+                              │ Assessment             │
+                              └────────────────────────┘
 ```
+
+---
+
+## 🧠 How the Application Works
+
+### Step 1 – Patient Screening
+
+The user enters demographic details and biomarker values through the screening interface.
+
+### Step 2 – Biomarker Risk Assessment
+
+The biomarker model evaluates the input values and predicts one of three categories:
+
+* **Healthy**
+* **Likely Benign Condition**
+* **High Cancer Risk Detected**
+
+### Step 3 – Conditional CT Analysis
+
+If the patient is classified as **High Cancer Risk**, the application activates the **CT Scan Confirmation module** and requests an abdominal CT scan upload.
+
+### Step 4 – CT Confirmation
+
+The uploaded CT image is processed and analyzed using the **CNN-based deep-learning model** to identify imaging patterns associated with pancreatic cancer.
+
+### Step 5 – Final Diagnosis
+
+The CT confirmation result is combined with the biomarker screening outcome to generate the **final diagnostic assessment and clinical recommendation**.
 
 ---
 
 ## 🧠 Models Used
 
-### 1. CT Image Model
-
-* **File:** `models/ct_cnn_model.h5`
-* **Type:** Convolutional Neural Network (CNN)
-* **Purpose:** Analyze CT scan images for pancreatic cancer-related abnormalities.
-
-### 2. Biomarker Prediction Model
+### 1. Biomarker Prediction Model
 
 * **File:** `models/pancreatic_biomarker_multiclass.pkl`
-* **Type:** Machine Learning multiclass prediction model
-* **Purpose:** Predict pancreatic cancer-related outcomes from biomarker values.
+* **Purpose:** Predict pancreatic cancer risk from biomarker values.
+* **Output Classes:** Healthy, Likely Benign, High Cancer Risk.
+
+### 2. CT Image Confirmation Model
+
+* **File:** `models/ct_cnn_model.h5`
+* **Purpose:** Analyze abdominal CT scans for pancreatic cancer-related abnormalities.
+* **Type:** Convolutional Neural Network (CNN).
+
+---
+
+## 📊 Example Results
+
+### ✅ Healthy Screening Result
+
+* **Result:** Healthy
+* **Recommendation:** Balanced diet, regular exercise, annual health check-up.
+
+### ⚠️ Likely Benign Condition
+
+* **Result:** Likely Benign Condition
+* **Recommendation:** Gastroenterology consultation, possible ultrasound evaluation, dietary management.
+
+### 🚨 High Cancer Risk Detected
+
+* **Result:** High Cancer Risk Detected
+* **Recommendation:** Proceed to CT Scan Confirmation.
+
+### 🩻 CT Scan Confirmation
+
+* Upload abdominal CT image
+* CNN-based CT analysis is performed automatically
+
+### 🧾 Final Diagnosis
+
+**Example Output:**
+
+```text
+Final Diagnosis: Pancreatic Cancer Detected
+
+Immediate Recommendations:
+- Consult an oncologist immediately
+- Further imaging (MRI / biopsy)
+- Multidisciplinary cancer care evaluation
+```
 
 ---
 
 ## ⚙️ Installation
 
-### Clone the repository
+### Clone the Repository
 
 ```bash
 git clone https://github.com/your-username/pancreatic-cancer-detection.git
 cd pancreatic-cancer-detection
 ```
 
-### Create a virtual environment
+### Create a Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-### Activate the environment
+### Activate the Environment
 
 **Windows**
 
@@ -151,7 +232,7 @@ venv\\Scripts\\activate
 source venv/bin/activate
 ```
 
-### Install dependencies
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -167,65 +248,53 @@ Start the application using:
 python app.py
 ```
 
-The application will load:
+The application automatically loads:
 
-* `ct_cnn_model.h5` for CT image analysis
-* `pancreatic_biomarker_multiclass.pkl` for biomarker prediction
+* `pancreatic_biomarker_multiclass.pkl` for biomarker screening
+* `ct_cnn_model.h5` for CT scan confirmation
 * preprocessing and prediction utilities from the `utils/` package
-
----
-
-## 📊 Example Output
-
-The application generates a diagnostic prediction based on the provided biomarker values and/or CT image input.
-
-### Sample Result
-
-```text
-Prediction Status : Pancreatic Cancer Detected
-Confidence Level  : High
-Diagnostic Result : Further clinical evaluation recommended
-```
-
-> Replace this section with your actual output screenshot inside a `screenshots/` folder if available.
 
 ---
 
 ## 📈 Project Highlights
 
-* ✔️ **Multimodal healthcare AI application**
-* ✔️ **CNN-based medical image analysis**
-* ✔️ **Machine Learning multiclass prediction**
-* ✔️ **Integrated biomarker + CT workflow**
-* ✔️ **Reusable preprocessing and prediction utilities**
-* ✔️ **Professional Python project structure**
+* ✔️ **Sequential hybrid screening architecture**
+* ✔️ **Biomarker-driven primary risk assessment**
+* ✔️ **Conditional CNN-based CT confirmation**
+* ✔️ **Integrated diagnostic decision workflow**
+* ✔️ **Clinical recommendation generation**
+* ✔️ **Professional Python project organization**
+* ✔️ **Healthcare-oriented interactive user interface**
 
 ---
 
 ## 🎯 Use Cases
 
-* Early pancreatic cancer risk assessment
+* Early pancreatic cancer risk screening
 * AI-assisted clinical decision support
-* Medical image analysis research
 * Biomarker-driven healthcare analytics
+* Medical image analysis research
 * Academic and healthcare AI demonstration projects
+* Hybrid radiomics and biomarker research workflows
 
 ---
 
 ## 🔒 Important Note
 
-This project is developed for **educational, research, and AI demonstration purposes**. It is intended to support analysis workflows and **must not be used as a substitute for professional medical diagnosis or treatment decisions**.
+This project is intended for **educational, research, and AI demonstration purposes only**. It is designed to support screening and analysis workflows and **must not be used as a substitute for professional medical diagnosis or treatment decisions**.
 
 ---
 
-## 📌 Future Improvements
+## 🔮 Future Enhancements
 
-* Improved CT image preprocessing and segmentation
+* Advanced CT image segmentation
 * Explainable AI (XAI) visualizations
+* Probability-based risk scoring
+* PDF diagnostic report export
 * Web-based clinical dashboard
 * Cloud deployment support
-* Enhanced multimodal fusion strategies
 * Larger clinical validation datasets
+* Improved multimodal fusion strategies
 
 ---
 
